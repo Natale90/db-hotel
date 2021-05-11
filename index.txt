@@ -1,0 +1,44 @@
+in foglio di testo, scrivere le query necessarie per rispondere ai seguenti quesiti:
+
+● Selezionare tutti gli ospiti
+
+  SELECT *
+  FROM `ospiti`;
+
+  oppure se si vuole sapere solo il nome e cognome:
+
+  SELECT name, lastname
+  FROM ospiti;
+
+● Selezionare tutti gli ospiti con document type = a CI
+
+  SELECT document_type
+  FROM `ospiti`
+  WHERE document_type LIKE 'CI';
+
+● Selezionare i paganti che abbiano un ospite id associato
+
+  SELECT name, lastname, ospite_id
+  FROM `paganti`
+  WHERE `ospite_id` <> 'NULL';
+
+● Selezionare tutte le stanze del primo piano
+
+  SELECT room_number, floor
+  FROM `stanze`
+  WHERE `floor` = 1;
+
+● Selezionare tutti gli ospiti che iniziano per E
+
+  SELECT name, lastname
+  FROM `ospiti`
+  WHERE name LIKE 'E%';
+
+● Selezionare tutti gli ospiti che abbiano meno di 30 anni
+
+  SELECT name, lastname, YEAR(NOW()) - YEAR(date_of_birth) AS age
+  FROM ospiti
+  WHERE YEAR(NOW()) - YEAR(date_of_birth)  <  30;
+
+
+● Seleziona tutte le prenotazioni precedenti a maggio 2018
