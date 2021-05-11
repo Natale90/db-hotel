@@ -42,3 +42,14 @@ in foglio di testo, scrivere le query necessarie per rispondere ai seguenti ques
 
 
 ● Seleziona tutte le prenotazioni precedenti a maggio 2018
+
+  SELECT *
+  FROM `prenotazioni`
+  WHERE created_at < '2018-05-01'
+
+  oppure:
+
+  SELECT *
+  FROM `prenotazioni`
+  WHERE YEAR(created_at) <= 2018
+  AND MONTH(created_at) < 5
