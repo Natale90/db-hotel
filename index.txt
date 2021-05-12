@@ -1,3 +1,5 @@
+esercizio QUERY SQL 11/05/2021
+
 in foglio di testo, scrivere le query necessarie per rispondere ai seguenti quesiti:
 
 ● Selezionare tutti gli ospiti
@@ -53,3 +55,33 @@ in foglio di testo, scrivere le query necessarie per rispondere ai seguenti ques
   FROM `prenotazioni`
   WHERE YEAR(created_at) <= 2018
   AND MONTH(created_at) < 5
+
+--------------------------------------------------------
+
+
+esercizio QUERY SQL 12/05/2021
+
+1. Come si chiamano gli ospiti che hanno fatto più di due prenotazioni?
+
+  SELECT ospiti.*, COUNT(ospiti.id) AS prenotazioni_numero
+  FROM ospiti
+  JOIN prenotazioni_has_ospiti
+    ON prenotazioni_has_ospiti.ospite_id =  ospiti.id
+  JOIN prenotazioni
+    ON prenotazioni_has_ospiti.prenotazione_id = prenotazioni.id
+  GROUP BY ospiti.id
+  HAVING COUNT(ospiti.id) > 1
+
+2. Stampare tutti gli ospiti per ogni prenotazione.
+
+  SELECT ospiti.id, COUNT(*)
+  FROM ospiti
+  JOIN prenotazioni_has_ospiti
+    ON prenotazioni_has_ospiti.ospite_id = ospiti.id
+  JOIN prenotazioni
+    ON prenotazioni_has_ospiti.prenotazione_id = prenotazioni.id
+  GROUP BY ospiti.id
+
+3. Stampare nome, congome, prezzo e pagante per tutte le prenotazioni fatte a Maggio 2018.
+
+  
